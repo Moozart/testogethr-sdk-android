@@ -8,7 +8,6 @@ This repository is intentionally documentation-only. SDK source code remains in 
 
 - Android artifact source: Maven Central (`com.testogethr:sdk`)
 - iOS package repo: https://github.com/Moozart/testogethr-sdk-ios-spm
-- Integration docs (this repo): https://github.com/Moozart/testogethr-sdk-docs
 
 ## Quick Links
 
