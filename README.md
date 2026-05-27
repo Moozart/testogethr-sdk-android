@@ -1,32 +1,55 @@
-# Testogethr SDK Docs
+# Testogethr Android SDK Showcase
 
-Public integration documentation for the Testogethr mobile SDK binaries.
+[![GitHub stars](https://img.shields.io/github/stars/Moozart/testogethr-sdk-android?style=social)](https://github.com/Moozart/testogethr-sdk-android/stargazers)
+[![Latest release](https://img.shields.io/github/v/release/Moozart/testogethr-sdk-android?display_name=tag&sort=semver)](https://github.com/Moozart/testogethr-sdk-android/releases/latest)
 
-This repository is intentionally documentation-only. SDK source code remains in a private repository.
+Public Android SDK showcase repository for Testogethr integration, releases, and issue tracking.
 
-## Repositories
+## Scope
 
-- Android artifact source: Maven Central (`com.testogethr:sdk`)
-- iOS package repo: https://github.com/Moozart/testogethr-sdk-ios-spm
+- Android SDK integration guidance
+- Public release/tag visibility
+- Issue intake for integrators
+
+This repository does **not** contain Testogethr SDK source code.
+SDK source code remains private.
+
+## Android Dependency
+
+```kotlin
+dependencies {
+    implementation("com.testogethr:sdk:<version>")
+}
+```
+
+Replace `<version>` with the latest stable release tag.
+
+## SDK Access Token (Required)
+
+Create your SDK token from the **Testogethr mobile app**:
+
+1. Open Testogethr app
+2. Go to **Profile**
+3. Open **API Key Manager**
+4. Generate/copy SDK access token
 
 ## Quick Links
 
 - Android integration guide: [docs/android.md](docs/android.md)
 - iOS integration guide: [docs/ios.md](docs/ios.md)
 - Changelog: [CHANGELOG.md](CHANGELOG.md)
+- iOS SwiftPM repo: <https://github.com/Moozart/testogethr-sdk-ios-spm>
 
-## Supported Platforms
+## Releases and Tags
 
-- Android: minSdk 24+
-- iOS: 16.0+
+- Tags follow semantic versioning: `vMAJOR.MINOR.PATCH`
+- Each public SDK release should have:
+  - Git tag
+  - GitHub Release notes
+  - Updated integration notes (if API changed)
 
-## Versioning
+## Support and Issues
 
-SDK releases use semantic versioning (`MAJOR.MINOR.PATCH`).
-
-- Android versions are published to Maven Central.
-- iOS versions are published as binary XCFramework releases in the iOS SPM repo.
-
-## Security
-
-For private vulnerability disclosure, contact the Testogethr team directly before opening public issues.
+- Bug reports: use the Bug Report issue template
+- Feature requests: use the Feature Request issue template
+- Security reports: see [`.github/SUPPORT.md`](.github/SUPPORT.md)

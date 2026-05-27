@@ -18,9 +18,18 @@ dependencies {
 
 Replace `<version>` with the latest stable SDK version.
 
-## 3) Initialize SDK
+## 3) Get SDK Access Token
 
-Initialize as early as possible (typically in your `Application.onCreate`).
+Create your SDK token from the Testogethr app:
+
+1. Open Testogethr app
+2. Go to **Profile**
+3. Open **API Key Manager**
+4. Generate/copy your token
+
+## 4) Initialize SDK
+
+Initialize as early as possible (typically in `Application.onCreate`).
 
 ```kotlin
 import android.app.Application
@@ -43,7 +52,7 @@ class MyApplication : Application() {
 }
 ```
 
-## 4) Register schema and track events
+## 5) Register schema and track events
 
 ```kotlin
 import com.testogethr.sdk.TestogethrSdk
@@ -62,7 +71,7 @@ TestogethrSdk.get().registerSchema(
 TestogethrSdk.get().trackEvent(event = bossEvent)
 ```
 
-## 5) Start test session from deep link
+## 6) Start test session from deep link
 
 Read the `sessionToken` query parameter and start the session.
 
