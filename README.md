@@ -1,5 +1,7 @@
 # Testogethr Android SDK Showcase
 
+![Testogethr Banner](assets/banner/testogethr-hero.png)
+
 [![GitHub stars](https://img.shields.io/github/stars/Moozart/testogethr-sdk-android?style=social)](https://github.com/Moozart/testogethr-sdk-android/stargazers)
 [![Latest release](https://img.shields.io/github/v/release/Moozart/testogethr-sdk-android?display_name=tag&sort=semver)](https://github.com/Moozart/testogethr-sdk-android/releases/latest)
 
@@ -24,14 +26,6 @@ Use the official docs AI-assisted quick start:
 - Full integration guide (deep links, schema, tracking): <https://docs.testogethr.com/docs/usage>
 
 You can copy the AI prompt from docs and generate project-specific integration steps in minutes.
-
-## In-App Preview
-
-<p align="center">
-  <img src="assets/screenshots/step-1.jpg" alt="Testogethr app step 1" width="240" />
-  <img src="assets/screenshots/step-3.jpg" alt="Testogethr app step 3" width="240" />
-  <img src="assets/screenshots/step-5.jpg" alt="Testogethr app step 5" width="240" />
-</p>
 
 ## Repository Scope
 
