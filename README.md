@@ -9,21 +9,23 @@ Public Android showcase repository for Testogethr SDK integration, release track
 
 ## What Testogethr Does
 
-Testogethr helps mobile teams validate campaign flows with real users and measurable milestones.
+Testogethr helps mobile teams run collaborative testing before release and ship with confidence.
+
+It is designed for teams that need reciprocal testing support for **Google Play Closed Testing** and pre-production validation before moving to production.
 
 With the SDK, you can:
 
-- Start and bind test sessions from deep links
-- Register declared events for milestone tracking
-- Track campaign/test events consistently across app flows
-- Verify completion data in a structured way during closed tests
+- Find reciprocal testers for Google Play closed and production-readiness test cycles
+- Run test campaigns with real users from the community
+- Collect actionable feedback and issue reports quickly
+- Improve release quality before public rollout
 
 ## Integrate Faster with AI
 
 Use the official docs AI-assisted quick start:
 
 - AI-assisted intro and setup: <https://docs.testogethr.com/docs/intro>
-- Full integration guide (deep links, schema, tracking): <https://docs.testogethr.com/docs/usage>
+- Full integration guide: <https://docs.testogethr.com/docs/usage>
 
 You can copy the AI prompt from docs and generate project-specific integration steps in minutes.
 
