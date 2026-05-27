@@ -5,6 +5,34 @@
 
 Public Android showcase repository for Testogethr SDK integration, release tracking, and issue intake.
 
+## What Testogethr Does
+
+Testogethr helps mobile teams validate campaign flows with real users and measurable milestones.
+
+With the SDK, you can:
+
+- Start and bind test sessions from deep links
+- Register declared events for milestone tracking
+- Track campaign/test events consistently across app flows
+- Verify completion data in a structured way during closed tests
+
+## Integrate Faster with AI
+
+Use the official docs AI-assisted quick start:
+
+- AI-assisted intro and setup: <https://docs.testogethr.com/docs/intro>
+- Full integration guide (deep links, schema, tracking): <https://docs.testogethr.com/docs/usage>
+
+You can copy the AI prompt from docs and generate project-specific integration steps in minutes.
+
+## In-App Preview
+
+<p align="center">
+  <img src="assets/screenshots/step-1.jpg" alt="Testogethr app step 1" width="240" />
+  <img src="assets/screenshots/step-3.jpg" alt="Testogethr app step 3" width="240" />
+  <img src="assets/screenshots/step-5.jpg" alt="Testogethr app step 5" width="240" />
+</p>
+
 ## Repository Scope
 
 This repository is for:
@@ -19,6 +47,8 @@ This repository does **not** include Testogethr SDK source code. SDK source rema
 
 - Android integration guide: [docs/android.md](docs/android.md)
 - iOS integration guide: [docs/ios.md](docs/ios.md)
+- Docs homepage: <https://docs.testogethr.com>
+- AI-assisted quick start: <https://docs.testogethr.com/docs/intro>
 - iOS SwiftPM repository: <https://github.com/Moozart/testogethr-sdk-ios-spm>
 - Changelog: [CHANGELOG.md](CHANGELOG.md)
 - Latest Android release: <https://github.com/Moozart/testogethr-sdk-android/releases/latest>
