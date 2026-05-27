@@ -59,6 +59,7 @@ Use the Swift package repository URL:
 `https://github.com/Moozart/testogethr-sdk-ios-spm`
 
 Then select the release version you want.
+Use the **Latest release** badge in that repository to choose the current stable tag.
 
 ## Android Integration Quick Start
 
