@@ -3,18 +3,46 @@
 [![GitHub stars](https://img.shields.io/github/stars/Moozart/testogethr-sdk-android?style=social)](https://github.com/Moozart/testogethr-sdk-android/stargazers)
 [![Latest release](https://img.shields.io/github/v/release/Moozart/testogethr-sdk-android?display_name=tag&sort=semver)](https://github.com/Moozart/testogethr-sdk-android/releases/latest)
 
-Public Android SDK showcase repository for Testogethr integration, releases, and issue tracking.
+Public Android showcase repository for Testogethr SDK integration, release tracking, and issue intake.
 
-## Scope
+## Repository Scope
 
-- Android SDK integration guidance
-- Public release/tag visibility
-- Issue intake for integrators
+This repository is for:
 
-This repository does **not** contain Testogethr SDK source code.
-SDK source code remains private.
+- Android SDK integration documentation
+- Public release and tag visibility
+- Integrator issue tracking and support routing
 
-## Android Dependency
+This repository does **not** include Testogethr SDK source code. SDK source remains private.
+
+## Quick Links
+
+- Android integration guide: [docs/android.md](docs/android.md)
+- iOS integration guide: [docs/ios.md](docs/ios.md)
+- iOS SwiftPM repository: <https://github.com/Moozart/testogethr-sdk-ios-spm>
+- Changelog: [CHANGELOG.md](CHANGELOG.md)
+- Latest Android release: <https://github.com/Moozart/testogethr-sdk-android/releases/latest>
+- Open an issue: <https://github.com/Moozart/testogethr-sdk-android/issues>
+
+## SDK Access Token (Required)
+
+You must generate the SDK access token from the **Testogethr mobile app**:
+
+1. Open Testogethr app
+2. Go to **Profile**
+3. Open **API Key Manager**
+4. Generate and copy your SDK token
+
+> Critical: SDK initialization will fail without a valid token from **Profile -> API Key Manager**.
+
+## Download Testogethr App
+
+- Android (Google Play): <https://play.google.com/store/apps/details?id=com.testogethr.app>
+- iOS (App Store): <https://apps.apple.com/>
+
+## Installation
+
+### Android (Maven)
 
 ```kotlin
 dependencies {
@@ -22,34 +50,115 @@ dependencies {
 }
 ```
 
-Replace `<version>` with the latest stable release tag.
+Replace `<version>` with the latest stable release from the release badge above.
 
-## SDK Access Token (Required)
+### iOS (Swift Package Manager)
 
-Create your SDK token from the **Testogethr mobile app**:
+Use the Swift package repository URL:
 
-1. Open Testogethr app
-2. Go to **Profile**
-3. Open **API Key Manager**
-4. Generate/copy SDK access token
+`https://github.com/Moozart/testogethr-sdk-ios-spm`
 
-## Quick Links
+Then select the release version you want.
 
-- Android integration guide: [docs/android.md](docs/android.md)
-- iOS integration guide: [docs/ios.md](docs/ios.md)
-- Changelog: [CHANGELOG.md](CHANGELOG.md)
-- iOS SwiftPM repo: <https://github.com/Moozart/testogethr-sdk-ios-spm>
+## Android Integration Quick Start
 
-## Releases and Tags
+### 1) Initialize SDK
 
-- Tags follow semantic versioning: `vMAJOR.MINOR.PATCH`
-- Each public SDK release should have:
+Initialize early (typically in `Application.onCreate`).
+
+```kotlin
+import android.app.Application
+import android.util.Log
+import com.testogethr.sdk.TestogethrConfig
+import com.testogethr.sdk.TestogethrSdk
+
+class MyApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+
+        TestogethrSdk.initialize(
+            sdkAccessToken = "YOUR_SDK_ACCESS_TOKEN",
+            config = TestogethrConfig(applicationContext),
+            debugLogger = { level, tag, message, throwable ->
+                Log.d("Testogethr", "[$level] $tag: $message", throwable)
+            }
+        )
+    }
+}
+```
+
+### 2) Configure deep link and start session
+
+Add an intent filter:
+
+```xml
+<activity android:name=".MainActivity" ...>
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="${applicationId}" android:host="testogethr" />
+    </intent-filter>
+</activity>
+```
+
+Extract `sessionToken` and start session:
+
+```kotlin
+private fun handleIntent(intent: Intent?) {
+    val sessionToken = intent?.data?.getQueryParameter("sessionToken")
+    if (sessionToken != null) {
+        TestogethrSdk.get().startSession(sessionToken)
+    }
+}
+```
+
+### 3) Register schema
+
+```kotlin
+import com.testogethr.sdk.TestogethrSdk
+import com.testogethr.shared.models.api.sdk.DeclaredEvent
+
+val bossEvent = DeclaredEvent(
+    name = "boss_defeated",
+    description = "Fired when the final alien boss is beaten"
+)
+
+TestogethrSdk.get().registerSchema(
+    isDiscoveryMode = true,
+    events = listOf(bossEvent)
+)
+```
+
+### 4) Track events
+
+```kotlin
+TestogethrSdk.get().trackEvent(event = bossEvent)
+```
+
+You can also track by name:
+
+```kotlin
+TestogethrSdk.get().trackEvent(eventName = "boss_defeated")
+```
+
+## iOS Integration Reference
+
+For full iOS integration:
+
+- iOS quick guide in this repo: [docs/ios.md](docs/ios.md)
+- iOS distribution repo (SwiftPM): <https://github.com/Moozart/testogethr-sdk-ios-spm>
+
+## Release and Version Policy
+
+- Public versions are tagged as `vMAJOR.MINOR.PATCH`
+- Every release should include:
   - Git tag
   - GitHub Release notes
-  - Updated integration notes (if API changed)
+  - Updated integration docs when API behavior changes
 
-## Support and Issues
+## Support
 
 - Bug reports: use the Bug Report issue template
 - Feature requests: use the Feature Request issue template
-- Security reports: see [`.github/SUPPORT.md`](.github/SUPPORT.md)
+- Security disclosures: see [`.github/SUPPORT.md`](.github/SUPPORT.md)
